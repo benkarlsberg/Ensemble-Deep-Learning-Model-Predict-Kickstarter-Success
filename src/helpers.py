@@ -1,3 +1,5 @@
+import numpy as np
+import pandas as pd
 import re
 from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag
@@ -52,13 +54,13 @@ def calculate_threshold_values(prob, y):
     return df
 
 def plot_roc(ax, df):
-    ax.plot([1]+list(df.fpr), [1]+list(df.tpr), label="ROC")
+    ax.plot([1]+list(df.fpr), [1]+list(df.tpr), label="ROC", color = 'b')
     ax.plot([0,1],[0,1], 'k', label="random")
-    ax.set_xlabel('fpr')
-    ax.set_ylabel('tpr')
-    ax.set_title('ROC Curve')
+    ax.set_xlabel('fpr', fontsize = 15)
+    ax.set_ylabel('tpr', fontsize = 15)
+    ax.set_title('ROC Curve', fontsize = 20)
     ax.legend()
-    
+
 def plot_precision_recall(ax, df):
     ax.plot(df.tpr,df.precision, label='precision/recall')
     #ax.plot([0,1],[0,1], 'k')
